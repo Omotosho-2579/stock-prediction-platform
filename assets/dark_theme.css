@@ -1,0 +1,124 @@
+/* assets/dark_theme.css */
+
+[data-theme="dark"] {
+    --primary-color: #3b82f6;
+    --primary-dark: #2563eb;
+    --primary-light: #60a5fa;
+    --secondary-color: #10b981;
+    --secondary-dark: #059669;
+    --accent-color: #f59e0b;
+    --success-color: #22c55e;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #06b6d4;
+    
+    --background-primary: #0f172a;
+    --background-secondary: #1e293b;
+    --background-tertiary: #334155;
+    --surface-color: #1e293b;
+    
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    
+    --border-color: #334155;
+    --border-light: #475569;
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .stApp {
+    background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+}
+
+[data-theme="dark"] .main {
+    background: var(--background-primary);
+}
+
+[data-theme="dark"] [data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] h1 {
+    background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="dark"] h2::after {
+    background: linear-gradient(90deg, var(--primary-light), var(--secondary-color));
+}
+
+[data-theme="dark"] .stButton > button {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.5);
+}
+
+[data-theme="dark"] .stButton > button:hover {
+    box-shadow: 0 6px 20px 0 rgba(59, 130, 246, 0.6);
+}
+
+[data-theme="dark"] .stSelectbox > div > div,
+[data-theme="dark"] .stTextInput > div > div,
+[data-theme="dark"] .stNumberInput > div > div {
+    background: var(--background-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .stTabs [data-baseweb="tab-list"] {
+    background: var(--background-tertiary);
+}
+
+[data-theme="dark"] .stTabs [data-baseweb="tab"]:hover {
+    background: var(--background-secondary);
+}
+
+[data-theme="dark"] [data-testid="stDataFrame"] thead {
+    background: linear-gradient(135deg, #1e40af, #065f46);
+}
+
+[data-theme="dark"] [data-testid="stDataFrame"] tbody tr:hover {
+    background: var(--background-tertiary);
+}
+
+[data-theme="dark"] .custom-card {
+    background: var(--surface-color);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .stMarkdown code {
+    background: var(--background-tertiary);
+    color: var(--primary-light);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .stMarkdown pre {
+    background: var(--background-tertiary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .footer {
+    background: var(--background-secondary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--background-tertiary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-color: var(--background-tertiary);
+}
+
+[data-theme="dark"] ::selection {
+    background: rgba(59, 130, 246, 0.3);
+    color: var(--text-primary);
+}
+
