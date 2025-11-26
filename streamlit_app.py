@@ -163,8 +163,14 @@ initialize_session_state()
 def render_sidebar():
     """Render sidebar with navigation and quick actions"""
     with st.sidebar:
-        # Logo and title
-        st.image(str(Path(__file__).parent.parent / "assets" / "logo.png"), width=200)
+        # Logo with error handling
+        try:
+            logo_path = Path(__file__).parent.parent / "assets" / "logo.png"
+            if logo_path.exists():
+                st.image(str(logo_path), width=200)
+        except Exception as e:
+            pass  # Skip logo if not found
+        
         st.title(APP_NAME)
         st.caption(f"v{APP_VERSION}")
         
@@ -172,10 +178,13 @@ def render_sidebar():
         
         # Market status
         st.subheader("📊 Market Status")
-        if is_market_open():
-            st.markdown('<span class="market-open">🟢 Market Open</span>', unsafe_allow_html=True)
-        else:
-            st.markdown('<span class="market-closed">🔴 Market Closed</span>', unsafe_allow_html=True)
+        try:
+            if is_market_open():
+                st.markdown('<span class="market-open">🟢 Market Open</span>', unsafe_allow_html=True)
+            else:
+                st.markdown('<span class="market-closed">🔴 Market Closed</span>', unsafe_allow_html=True)
+        except:
+            st.info("Market status unavailable")
         
         st.divider()
         
@@ -267,7 +276,6 @@ def render_sidebar():
         st.caption(f"{'✅' if ENABLE_TELEGRAM_ALERTS else '❌'} Telegram Alerts")
         st.caption(f"{'✅' if ENABLE_EMAIL_ALERTS else '❌'} Email Alerts")
         st.caption(f"{'✅' if ENABLE_CRYPTO_TRADING else '❌'} Crypto Trading")
-
 render_sidebar()
 
 # ============================================================================
