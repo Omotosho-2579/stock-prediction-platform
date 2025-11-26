@@ -6,8 +6,6 @@ textColor = "#0f172a"
 font = "sans serif"
 
 [server]
-# Remove this line so it uses the default 8501 on Community Cloud
-# port = 8501
 enableCORS = false
 enableXsrfProtection = true
 maxUploadSize = 200
@@ -17,9 +15,7 @@ runOnSave = true
 
 [browser]
 gatherUsageStats = false
-# Let these use their defaults
-# serverAddress = "localhost"
-# serverPort = 8501
+
 
 [runner]
 magicEnabled = true
