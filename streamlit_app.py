@@ -443,7 +443,7 @@ with tab3:
         - Real-time data fetching
         - Caching for performance
         
-        🔗 **GitHub:** [View source code](https://github.com/yourusername/stock-prediction-platform)
+        🔗 **GitHub:** [View source code](https://github.com/Omotosho-2579/stock-prediction-platform)
     """)
 
 st.divider()

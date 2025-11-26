@@ -1,5 +1,8 @@
 # .gitignore
 
+# Streamlit secrets 
+.streamlit/secrets.toml
+
 __pycache__/
 *.py[cod]
 *$py.class

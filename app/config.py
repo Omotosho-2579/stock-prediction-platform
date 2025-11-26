@@ -10,6 +10,27 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# Try to load from Streamlit secrets (for deployment)
+try:
+    import streamlit as st
+    if hasattr(st, 'secrets') and 'secrets' in st.secrets:
+        USE_STREAMLIT_SECRETS = True
+    else:
+        USE_STREAMLIT_SECRETS = False
+except (ImportError, FileNotFoundError, AttributeError):
+    USE_STREAMLIT_SECRETS = False
+
+def get_secret(key, default=None):
+    """Get secret from Streamlit secrets or environment variables"""
+    if USE_STREAMLIT_SECRETS:
+        try:
+            value = st.secrets["secrets"].get(key, default)
+            if value is not None:
+                return value
+        except:
+            pass
+    return os.getenv(key, default)
+
 # ============================================================================
 # PROJECT PATHS
 # ============================================================================
@@ -37,30 +58,30 @@ for directory in [DATA_DIR, CACHE_DIR, PREDICTIONS_DIR, SENTIMENT_DIR,
 # ============================================================================
 
 # News API (for sentiment analysis)
-NEWSAPI_KEY = os.getenv("NEWSAPI_KEY", None)
+NEWSAPI_KEY = get_secret("NEWSAPI_KEY")
 
 # Alpha Vantage (backup stock data source)
-ALPHAVANTAGE_KEY = os.getenv("ALPHAVANTAGE_KEY", None)
+ALPHAVANTAGE_KEY = get_secret("ALPHAVANTAGE_KEY")
 
 # Finnhub (alternative financial news)
-FINNHUB_KEY = os.getenv("FINNHUB_KEY", None)
+FINNHUB_KEY = get_secret("FINNHUB_KEY")
 
 # Telegram Bot (for alerts)
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", None)
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", None)
+TELEGRAM_BOT_TOKEN = get_secret("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = get_secret("TELEGRAM_CHAT_ID")
 
 # Twitter API (for social sentiment)
-TWITTER_API_KEY = os.getenv("TWITTER_API_KEY", None)
-TWITTER_API_SECRET = os.getenv("TWITTER_API_SECRET", None)
-TWITTER_ACCESS_TOKEN = os.getenv("TWITTER_ACCESS_TOKEN", None)
-TWITTER_ACCESS_SECRET = os.getenv("TWITTER_ACCESS_SECRET", None)
-TWITTER_BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN", None)
+TWITTER_API_KEY = get_secret("TWITTER_API_KEY")
+TWITTER_API_SECRET = get_secret("TWITTER_API_SECRET")
+TWITTER_ACCESS_TOKEN = get_secret("TWITTER_ACCESS_TOKEN")
+TWITTER_ACCESS_SECRET = get_secret("TWITTER_ACCESS_SECRET")
+TWITTER_BEARER_TOKEN = get_secret("TWITTER_BEARER_TOKEN")
 
 # Email Configuration (for alerts)
-EMAIL_SENDER = os.getenv("EMAIL_SENDER", None)
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", None)
-SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.gmail.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+EMAIL_SENDER = get_secret("EMAIL_SENDER")
+EMAIL_PASSWORD = get_secret("EMAIL_PASSWORD")
+SMTP_SERVER = get_secret("SMTP_SERVER", "smtp.gmail.com")
+SMTP_PORT = int(get_secret("SMTP_PORT", "587"))
 
 # ============================================================================
 # STOCK DATA CONFIGURATION
@@ -220,7 +241,7 @@ TABLE_WATCHLISTS = "watchlists"
 # LOGGING CONFIGURATION
 # ============================================================================
 
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+LOG_LEVEL = get_secret("LOG_LEVEL", "INFO")
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 LOG_FILE = DATA_DIR / "app.log"
 
