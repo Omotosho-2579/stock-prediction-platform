@@ -9,7 +9,7 @@ plotly==5.19.0
 
 yfinance==0.2.37
 alpha-vantage==2.3.1
-pandas-ta==0.3.14b0
+pandas-ta
 
 scikit-learn==1.6.1
 xgboost==2.0.3
