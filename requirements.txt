@@ -69,7 +69,7 @@ aiohttp==3.9.3
 lottie==0.7.0
 
 ta==0.11.0
-TA-Lib==0.4.28
+
 
 finnhub-python==2.4.19
 
