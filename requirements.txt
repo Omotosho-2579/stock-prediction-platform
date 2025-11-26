@@ -8,13 +8,9 @@ seaborn==0.13.2
 plotly==5.19.0
 
 yfinance==0.2.37
-<<<<<<< HEAD
-alpha-vantage==2.3.1
 pandas-ta
-=======
 alpha-vantage
 
->>>>>>> c9b99ea54d91da8107cb7b395a5d17ee5c2dd540
 
 scikit-learn==1.6.1
 xgboost==2.0.3
